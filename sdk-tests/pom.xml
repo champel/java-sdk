@@ -20,15 +20,16 @@
     <grpc.version>1.42.1</grpc.version>
     <protobuf.version>3.17.3</protobuf.version>
     <opentelemetry.version>0.14.0</opentelemetry.version>
-    <spring-boot.version>2.7.8</spring-boot.version>
+    <product-spring-boot.version>2.7.8</product-spring-boot.version>
   </properties>
 
   <dependencyManagement>
+    <!-- Reproduce a product fixing its own spring boot version, will take priority over the dependencies defined in sdk-springboot -->
     <dependencies>
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
+        <version>${product-spring-boot.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -112,15 +113,22 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <!-- Needed for dapr compatibility for spring boot versions before 2.7 -->
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.9.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>${spring-boot.version}</version>
+      <version>${product-spring-boot.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>
-      <version>${spring-boot.version}</version>
+      <version>${product-spring-boot.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>

@@ -104,7 +104,7 @@ jobs:
       run: mvn install  -q
     - name: Integration tests
       id: integration_tests
-      run: mvn -Dspring-boot.version=${{ matrix.spring-boot }} -f sdk-tests/pom.xml verify
+      run: mvn -Dproduct-spring-boot.version=${{ matrix.spring-boot }} -f sdk-tests/pom.xml verify
     - name: Upload test report for sdk
       uses: actions/upload-artifact@master
       with:
