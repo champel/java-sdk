@@ -37,9 +37,6 @@ jobs:
           - java: 11
             spring-boot-version: 2.3.6.RELEASE
             experimental: false
-          - java: 17
-            spring-boot-version: 3.0.2
-            experimental: true
     env:
       GOVER: 1.19
       GOOS: linux
