@@ -18,10 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     strategy:
+      fail-fast: true
       matrix:
         java: [ 11, 13, 15, 16 ]
         spring-boot-version: [ 2.7.8 ]
-        experimental: false
+        experimental: [ false ]
         include:
           - java: 11
             spring-boot-version: 2.6.14
