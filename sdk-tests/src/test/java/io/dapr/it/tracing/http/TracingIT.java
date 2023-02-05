@@ -76,7 +76,7 @@ public class TracingIT extends BaseIT {
         try (DaprClient client = new DaprClientBuilder().build()) {
             try (Scope scope = span.makeCurrent()) {
                 client.invokeMethod(daprRun.getAppName(), "sleep", 1, HttpExtension.POST)
-                    .contextWrite(getReactorContext())
+                    .subscriberContext(getReactorContext())
                     .block();
             }
         }

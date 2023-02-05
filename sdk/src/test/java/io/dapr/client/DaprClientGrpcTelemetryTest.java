@@ -42,7 +42,6 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
-import reactor.util.context.ContextView;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -190,7 +189,7 @@ public class DaprClientGrpcTelemetryTest {
         .setBody("request")
         .setHttpExtension(HttpExtension.NONE);
     Mono<Void> result = this.client.invokeMethod(req, TypeRef.get(Void.class))
-        .contextWrite(it -> it.putAll(contextCopy == null ? (ContextView) Context.empty() : contextCopy));
+        .subscriberContext(it -> it.putAll(contextCopy == null ? Context.empty() : contextCopy));
     result.block();
   }
 

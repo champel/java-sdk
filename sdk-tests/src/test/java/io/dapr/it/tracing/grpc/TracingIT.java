@@ -79,7 +79,7 @@ public class TracingIT extends BaseIT {
             try (Scope scope = span.makeCurrent()) {
                 SleepRequest req = SleepRequest.newBuilder().setSeconds(1).build();
                 client.invokeMethod(daprRun.getAppName(), "sleepOverGRPC", req.toByteArray(), HttpExtension.POST)
-                    .contextWrite(getReactorContext())
+                    .subscriberContext(getReactorContext())
                     .block();
             }
         }
