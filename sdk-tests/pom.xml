@@ -20,7 +20,7 @@
     <grpc.version>1.42.1</grpc.version>
     <protobuf.version>3.17.3</protobuf.version>
     <opentelemetry.version>0.14.0</opentelemetry.version>
-    <product-spring-boot.version>2.7.8</product-spring-boot.version>
+    <PRODUCT_SPRING_BOOT_VERSION>2.7.8</PRODUCT_SPRING_BOOT_VERSION>
   </properties>
 
   <dependencyManagement>
@@ -29,7 +29,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>${product-spring-boot.version}</version>
+        <version>${PRODUCT_SPRING_BOOT_VERSION}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -122,13 +122,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>${product-spring-boot.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>
-      <version>${product-spring-boot.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
