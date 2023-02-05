@@ -26,7 +26,6 @@ jobs:
       GOARCH: amd64
       GOPROXY: https://proxy.golang.org
       JDK_VER: ${{ matrix.java }}
-      PRODUCT_SPRING_BOOT_VERSION: ${{ matrix.spring-boot-version }}
       DAPR_CLI_VER: 1.10.0-rc.1
       DAPR_RUNTIME_VER: 1.10.0-rc.2
       DAPR_INSTALL_URL: https://raw.githubusercontent.com/dapr/cli/v1.10.0-rc.1/install/install.sh
@@ -103,9 +102,9 @@ jobs:
       uses: codecov/codecov-action@v3.1.1
     - name: Install jars
       run: mvn install  -q
-    - name: Integration tests
+    - name: Integration tests using spring boot version ${{ matrix.spring-boot-version }}
       id: integration_tests
-      run: mvn -f sdk-tests/pom.xml verify
+      run: PRODUCT_SPRING_BOOT_VERSION=${{ matrix.spring-boot-version }} mvn -f sdk-tests/pom.xml verify
     - name: Upload test report for sdk
       uses: actions/upload-artifact@master
       with:
