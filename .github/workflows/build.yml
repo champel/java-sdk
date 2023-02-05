@@ -16,13 +16,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
     strategy:
       matrix:
         java: [ 11, 13, 15, 16 ]
         spring-boot-version: [ 2.7.8 ]
+        experimental: false
         include:
           - java: 11
             spring-boot-version: 2.6.14
+            experimental: true
+          - java: 17
+            spring-boot-version: 3.0.2
+            experimental: true
     env:
       GOVER: 1.19
       GOOS: linux
