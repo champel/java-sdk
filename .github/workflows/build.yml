@@ -15,6 +15,7 @@ on:
 
 jobs:
   build:
+    name: "Build (java:${{ matrix.java }} spring: ${{ matrix.spring-boot-version }} experimental: ${{ matrix.experimental }})"
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental }}
     strategy:
@@ -26,16 +27,16 @@ jobs:
         include:
           - java: 11
             spring-boot-version: 2.6.14
-            experimental: true
+            experimental: false
           - java: 11
             spring-boot-version: 2.5.7
-            experimental: true
+            experimental: false
           - java: 11
             spring-boot-version: 2.4.0
-            experimental: true
+            experimental: false
           - java: 11
             spring-boot-version: 2.3.6.RELEASE
-            experimental: true
+            experimental: false
           - java: 17
             spring-boot-version: 3.0.2
             experimental: true
